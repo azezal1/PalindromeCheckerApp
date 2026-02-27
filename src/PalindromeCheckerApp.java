@@ -1,24 +1,31 @@
-
+/**
+ * UseCase2PalindromeCheckerApp
+ * Version: 1.0
+ * Description: Checks whether a hardcoded string is a palindrome.
+ */
 
 public class PalindromeCheckerApp {
 
-    // Application version constant
-    static final String APP_NAME = "Palindrome Checker App";
-    static final String VERSION = "Version 1.0";
-
-    /**
-     * Main Method - Entry point of the Java application
-     * JVM invokes this method automatically.
-     */
     public static void main(String[] args) {
 
-        // Display Welcome Message
-        System.out.println("=====================================");
-        System.out.println(" Welcome to " + APP_NAME);
-        System.out.println(" " + VERSION);
-        System.out.println("=====================================");
-        System.out.println("This application checks whether a given string is a palindrome.");
-        System.out.println("Program initialized successfully.");
-        System.out.println("=====================================");
+        // Hardcoded string (String Literal)
+        String word = "madam";
+
+        // Variable to store reversed string
+        String reversed = "";
+
+        // Reverse the string using loop
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed = reversed + word.charAt(i);
+        }
+
+        // Conditional Statement to check palindrome
+        if (word.equals(reversed)) {
+            System.out.println("The word \"" + word + "\" is a Palindrome.");
+        } else {
+            System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
+        }
+
+        System.out.println("Program executed successfully.");
     }
 }
