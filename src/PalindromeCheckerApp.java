@@ -1,31 +1,38 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
-    // Method to check palindrome using stack
+    // Method to check palindrome using both Queue and Stack
     public static boolean isPalindrome(String input) {
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Push all characters into the stack
+        // Enqueue and push all characters
         for (char ch : input.toCharArray()) {
-            stack.push(ch);
+            queue.add(ch);   // enqueue
+            stack.push(ch);  // push
         }
 
-        // Pop characters and build reversed string
-        StringBuilder reversed = new StringBuilder();
-        while (!stack.isEmpty()) {
-            reversed.append(stack.pop());
+        // Compare dequeue vs pop
+        while (!queue.isEmpty() && !stack.isEmpty()) {
+            char fromQueue = queue.remove(); // dequeue
+            char fromStack = stack.pop();    // pop
+
+            if (fromQueue != fromStack) {
+                return false; // mismatch found
+            }
         }
 
-        // Compare original and reversed strings
-        return input.equals(reversed.toString());
+        return true; // all matched
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=== UC5: Stack-Based Palindrome Checker ===");
+        System.out.println("=== UC6: Queue + Stack Based Palindrome Checker ===");
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
